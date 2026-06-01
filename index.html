@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鸣潮 - Wuthering Waves 官方游戏介绍</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        accent: '#ec4899',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                        'hot-melt': '#f97316',
+                        'condensation': '#3b82f6',
+                        'diffraction': '#a855f7',
+                        'conductive': '#eab308',
+                        'pneumatic': '#10b981',
+                        'annihilation': '#ef4444',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px rgba(99, 102, 241, 0.5)' },
+                            '100%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.8)' },
+                        }
+                    }
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            .text-shadow-lg {
+                text-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+            }
+            .bg-gradient-mingchao {
+                background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            }
+            .character-card {
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+            .character-card:hover {
+                transform: scale(1.05);
+            }
+            .character-card:hover .character-overlay {
+                opacity: 1;
+            }
+            .character-overlay {
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            .scroll-smooth {
+                scroll-behavior: smooth;
+            }
+        }
+    </style>
+</head>
+<body class="bg-darker text-gray-100 scroll-smooth">
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark/90 backdrop-blur-md border-b border-primary/30">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">鸣潮</span>
+                <span class="text-sm text-gray-400">Wuthering Waves</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-primary transition-colors">首页</a>
+                <a href="#overview" class="hover:text-primary transition-colors">游戏概述</a>
+                <a href="#worldview" class="hover:text-primary transition-colors">世界观</a>
+                <a href="#features" class="hover:text-primary transition-colors">游戏特色</a>
+                <a href="#characters" class="hover:text-primary transition-colors">角色图鉴</a>
+            </div>
+            <div class="md:hidden">
+                <button class="text-2xl">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-mingchao"></div>
+        <div class="absolute inset-0 bg-[url('https://picsum.photos/id/1039/1920/1080')] bg-cover bg-center opacity-20"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-darker via-transparent to-transparent"></div>
+        
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 text-shadow-lg animate-glow">鸣潮</h1>
+            <p class="text-xl md:text-2xl mb-8 text-gray-300 text-shadow">Wuthering Waves</p>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-12 text-gray-400">
+                百年前，神秘的"悲鸣"降临，扭曲物理法则，摧毁旧文明秩序。
+                你作为沉睡万年苏醒的漂泊者，将在这片被鸣潮重塑的世界中，
+                寻找失落的记忆，探寻世界的真相。
+            </p>
+            <a href="#characters" class="inline-block bg-gradient-to-r from-primary to-secondary px-8 py-4 rounded-full text-lg font-semibold hover:from-secondary hover:to-accent transition-all duration-300 shadow-lg hover:shadow-primary/50">
+                探索角色图鉴
+            </a>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fa fa-chevron-down text-2xl text-gray-400"></i>
+        </div>
+    </section>
+
+    <!-- 游戏概述 -->
+    <section id="overview" class="py-20 bg-dark">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">游戏概述</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                        《鸣潮》(Wuthering Waves)是由广州库洛科技有限公司开发的带有二次元风格的开放世界动作游戏，采用3D画面，于2024年5月23日全球同步上线。
+                    </p>
+                    <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                        游戏设定在一个后末日的科幻世界"索拉里斯"。"悲鸣"降临后，人类被旧日的法则遗留，文明于滩涂搁浅。玩家扮演一位经历漫长沉睡后苏醒的漂泊者，在由新时代、新环境、新技术构成的广阔天地中展开冒险。
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        在此过程中，你将结识众多能力各异的共鸣者伙伴，协助各地居民解决各类历史遗留问题，同时遭遇幻象与神秘反派角色，逐步恢复记忆并探寻世界的本质。
+                    </p>
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-2xl card-hover">
+                    <img src="https://picsum.photos/id/1015/800/600" alt="鸣潮游戏画面" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 世界观 -->
+    <section id="worldview" class="py-20 bg-gradient-mingchao">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">世界观</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-dark/50 backdrop-blur-sm rounded-xl p-6 border border-primary/20 card-hover">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-globe"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">索拉里斯星球</h3>
+                    <p class="text-gray-400">
+                        故事发生在被"鸣潮"灾难重创的后末日星球"索拉里斯"。百年前神秘的"悲鸣"现象降临，扭曲物理法则、催生危险异象"鸣式"与"残象"，摧毁旧文明秩序。
+                    </p>
+                </div>
+                
+                <div class="bg-dark/50 backdrop-blur-sm rounded-xl p-6 border border-primary/20 card-hover">
+                    <div class="text-4xl text-secondary mb-4">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">共鸣者</h3>
+                    <p class="text-gray-400">
+                        体表带有"声痕"，可与事物共鸣并操控频率的特殊人类。他们是对抗鸣式危机的主要力量，每位共鸣者都拥有独特的能力和战斗风格。
+                    </p>
+                </div>
+                
+                <div class="bg-dark/50 backdrop-blur-sm rounded-xl p-6 border border-primary/20 card-hover">
+                    <div class="text-4xl text-accent mb-4">
+                        <i class="fa fa-diamond"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">黑石</h3>
+                    <p class="text-gray-400">
+                        鸣潮生态产物之一，危险但具有极高经济价值与能源价值。如今已成为复苏时代不可或缺的物质，也是各方势力争夺的焦点。
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-dark/30 backdrop-blur-sm rounded-xl p-8 border border-primary/20">
+                <h3 class="text-2xl font-bold mb-6 text-center">核心剧情脉络</h3>
+                <div class="space-y-4 text-gray-300">
+                    <p>
+                        <span class="font-semibold text-primary">漂泊者苏醒：</span>
+                        玩家扮演沉睡万年苏醒的漂泊者，开局失忆，被共鸣者秧秧、炽霞所救，为寻找身世前往要塞之城今州。
+                    </p>
+                    <p>
+                        <span class="font-semibold text-secondary">对抗鸣式危机：</span>
+                        北落野战火蔓延，夜归军统帅忌炎率军抵抗灾难级鸣式"无相燹主"，暗处神秘组织"残星会"企图复苏鸣式，危机四伏。
+                    </p>
+                    <p>
+                        <span class="font-semibold text-accent">探寻世界真相：</span>
+                        随着冒险深入，你将逐渐揭开悲鸣的起源、共鸣者的秘密以及漂泊者自身的真实身份，发现隐藏在历史背后的惊人真相。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏特色 -->
+    <section id="features" class="py-20 bg-dark">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">游戏特色</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-8">
+                    <div class="flex space-x-4">
+                        <div class="text-3xl text-primary mt-1">
+                            <i class="fa fa-map-o"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">广阔开放世界</h3>
+                            <p class="text-gray-400">
+                                拥有高机动性的探索体验，解放奔跑体力限制，运用钩锁、蹬墙跑酷、自由翻越障碍，享受无拘无束的开放世界探索。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <div class="text-3xl text-secondary mt-1">
+                            <i class="fa fa-sword"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">高速流畅战斗</h3>
+                            <p class="text-gray-400">
+                                作为一款动作游戏，《鸣潮》拥有高速且流畅的战斗体验，在战斗中轻松使用极限闪避、逆势回击、声骸协战、特色的QTE等玩法。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <div class="text-3xl text-accent mt-1">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">丰富角色阵容</h3>
+                            <p class="text-gray-400">
+                                在旅途中，你将结识许多能力各异的共鸣者伙伴，陪伴你一同探索未知的未来。每位共鸣者都有着各自独特的个性与能力。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="flex space-x-4">
+                        <div class="text-3xl text-hot-melt mt-1">
+                            <i class="fa fa-paw"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">声骸异能系统</h3>
+                            <p class="text-gray-400">
+                                击败残象怪物可以获得声骸，使其能力为你所用！在广阔的开放世界中收集声骸，解锁各式各样的独特能力。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <div class="text-3xl text-conductive mt-1">
+                            <i class="fa fa-music"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">共鸣音乐系统</h3>
+                            <p class="text-gray-400">
+                                游戏中的一切都由频率构成，音乐与战斗、探索深度融合。不同的共鸣者拥有独特的音乐主题，战斗时会演奏出激昂的乐章。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <div class="text-3xl text-pneumatic mt-1">
+                            <i class="fa fa-camera"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">精美视觉表现</h3>
+                            <p class="text-gray-400">
+                                采用先进的3D渲染技术，打造出美轮美奂的游戏世界。从荒芜的北落野到繁华的皇龙城，每个地区都有独特的视觉风格。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 角色图鉴 -->
+    <section id="characters" class="py-20 bg-gradient-mingchao">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-4">
+                <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">角色图鉴</span>
+            </h2>
+            <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+                以下是截至3.4版本《鸣潮》游戏中的全部共鸣者角色，按共鸣属性分类展示。
+                每位角色都拥有独特的能力、背景故事和战斗风格。
+            </p>
+            
+            <!-- 属性标签 -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="character-tab active px-6 py-2 rounded-full bg-hot-melt text-white font-semibold" data-tab="hot-melt">
+                    热熔
+                </button>
+                <button class="character-tab px-6 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-condensation transition-colors" data-tab="condensation">
+                    冷凝
+                </button>
+                <button class="character-tab px-6 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-diffraction transition-colors" data-tab="diffraction">
+                    衍射
+                </button>
+                <button class="character-tab px-6 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-conductive transition-colors" data-tab="conductive">
+                    导电
+                </button>
+                <button class="character-tab px-6 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-pneumatic transition-colors" data-tab="pneumatic">
+                    气动
+                </button>
+                <button class="character-tab px-6 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-annihilation transition-colors" data-tab="annihilation">
+                    湮灭
+                </button>
+            </div>
+            
+            <!-- 角色卡片容器 -->
+            <div class="character-container">
+                <!-- 热熔属性角色 -->
+                <div id="hot-melt" class="character-tab-content active">
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                        <!-- 炽霞 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-hot-melt/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1027/300/400" alt="炽霞" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-hot-melt text-white text-xs px-2 py-1 rounded">
+                                    5星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">炽霞</h4>
+                                    <p class="text-sm text-gray-300">武器：迅刀</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        热情开朗的少女，拥有操控火焰的能力。性格活泼好动，总是充满活力，是团队中的开心果。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">炽霞</h4>
+                                <p class="text-sm text-hot-melt">热熔 · 迅刀</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 莫特斐 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-hot-melt/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1025/300/400" alt="莫特斐" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-hot-melt text-white text-xs px-2 py-1 rounded">
+                                    5星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">莫特斐</h4>
+                                    <p class="text-sm text-gray-300">武器：音感仪</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        出身于上流阶层，为人高傲、外表斯文。在科研领域极富天赋，被誉为新联邦最年轻的天才。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">莫特斐</h4>
+                                <p class="text-sm text-hot-melt">热熔 · 音感仪</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 丹槿 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-hot-melt/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1005/300/400" alt="丹槿" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-gray-500 text-white text-xs px-2 py-1 rounded">
+                                    4星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">丹槿</h4>
+                                    <p class="text-sm text-gray-300">武器：长刃</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        夜归成员，安静乖巧的少女，似乎对亲情十分重视。被夜归当成需要照顾的妹妹对待。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">丹槿</h4>
+                                <p class="text-sm text-hot-melt">热熔 · 长刃</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 达妮娅 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-hot-melt/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1003/300/400" alt="达妮娅" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-hot-melt text-white text-xs px-2 py-1 rounded">
+                                    5星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">达妮娅</h4>
+                                    <p class="text-sm text-gray-300">武器：音感仪</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        星炬学院虚质科学部学生，总对大家展露出"温柔"的微笑，偶尔也会说上几句俏皮话。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">达妮娅</h4>
+                                <p class="text-sm text-hot-melt">热熔 · 音感仪</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 莫宁 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-hot-melt/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1012/300/400" alt="莫宁" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-hot-melt text-white text-xs px-2 py-1 rounded">
+                                    5星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">莫宁</h4>
+                                    <p class="text-sm text-gray-300">武器：长刃</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        深空联合研究院的工程师，同时在星炬学院隧者工学部担任教授。使用人造的双腿踏足大地。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">莫宁</h4>
+                                <p class="text-sm text-hot-melt">热熔 · 长刃</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 冷凝属性角色 -->
+                <div id="condensation" class="character-tab-content hidden">
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                        <!-- 散华 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-condensation/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1011/300/400" alt="散华" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-condensation text-white text-xs px-2 py-1 rounded">
+                                    5星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">散华</h4>
+                                    <p class="text-sm text-gray-300">武器：迅刀</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        今汐近卫，沉默寡言但又忠诚可靠。可以降低四周气温，召唤冰雪。通过修习刀法来稳定心性。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">散华</h4>
+                                <p class="text-sm text-condensation">冷凝 · 迅刀</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 秧秧 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-condensation/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1000/300/400" alt="秧秧" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-gray-500 text-white text-xs px-2 py-1 rounded">
+                                    4星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">秧秧</h4>
+                                    <p class="text-sm text-gray-300">武器：音感仪</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        温柔善良的少女，是你苏醒后遇到的第一个人。拥有治愈他人的能力，总是关心着身边的每一个人。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">秧秧</h4>
+                                <p class="text-sm text-condensation">冷凝 · 音感仪</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 洛瑟菈 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-condensation/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1001/300/400" alt="洛瑟菈" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-condensation text-white text-xs px-2 py-1 rounded">
+                                    5星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">洛瑟菈</h4>
+                                    <p class="text-sm text-gray-300">武器：音感仪</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        星炬学院校长，心怀理想亦深谙现实的守望者。默默守护学生，为年轻人撑起理想天地。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">洛瑟菈</h4>
+                                <p class="text-sm text-condensation">冷凝 · 音感仪</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 绯雪 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-condensation/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1008/300/400" alt="绯雪" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-condensation text-white text-xs px-2 py-1 rounded">
+                                    5星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">绯雪</h4>
+                                    <p class="text-sm text-gray-300">武器：迅刀</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        来自苇原的灼樱巫女，现今以特别对策组唯一成员的身份在拉海洛停留。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">绯雪</h4>
+                                <p class="text-sm text-condensation">冷凝 · 迅刀</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 衍射属性角色 -->
+                <div id="diffraction" class="character-tab-content hidden">
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                        <!-- 吟霖 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-diffraction/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1002/300/400" alt="吟霖" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-diffraction text-white text-xs px-2 py-1 rounded">
+                                    5星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">吟霖</h4>
+                                    <p class="text-sm text-gray-300">武器：音感仪</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        神秘的歌者，拥有能够影响他人情绪的歌声。她的过去充满了谜团，似乎与悲鸣有着某种联系。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">吟霖</h4>
+                                <p class="text-sm text-diffraction">衍射 · 音感仪</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 琳奈 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-diffraction/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1004/300/400" alt="琳奈" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-diffraction text-white text-xs px-2 py-1 rounded">
+                                    5星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">琳奈</h4>
+                                    <p class="text-sm text-gray-300">武器：佩枪</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        星炬学院的预科学生，个性张扬的外表下充满活力与力量。战斗风格快速而华丽。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">琳奈</h4>
+                                <p class="text-sm text-diffraction">衍射 · 佩枪</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 露西 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-diffraction/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1006/300/400" alt="露西" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-diffraction text-white text-xs px-2 py-1 rounded">
+                                    5星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">露西</h4>
+                                    <p class="text-sm text-gray-300">武器：佩枪</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        赛博朋克联动限定角色，拥有浅粉白发和赛博义肢造型。战斗风格凌厉，擅长远程输出。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">露西</h4>
+                                <p class="text-sm text-diffraction">衍射 · 佩枪</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 导电属性角色 -->
+                <div id="conductive" class="character-tab-content hidden">
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                        <!-- 渊武 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-conductive/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1010/300/400" alt="渊武" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-gray-500 text-white text-xs px-2 py-1 rounded">
+                                    4星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">渊武</h4>
+                                    <p class="text-sm text-gray-300">武器：臂铠</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        拳馆老板，精通雷煌拳和养生术，为人处世颇为温和，深受街坊邻居欢迎。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">渊武</h4>
+                                <p class="text-sm text-conductive">导电 · 臂铠</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 折枝 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-conductive/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1016/300/400" alt="折枝" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-conductive text-white text-xs px-2 py-1 rounded">
+                                    5星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">折枝</h4>
+                                    <p class="text-sm text-gray-300">武器：长刃</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        来自古老家族的少女，拥有操控雷电的能力。性格冷静沉稳，做事一丝不苟。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">折枝</h4>
+                                <p class="text-sm text-conductive">导电 · 长刃</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 气动属性角色 -->
+                <div id="pneumatic" class="character-tab-content hidden">
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                        <!-- 忌炎 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-pneumatic/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1018/300/400" alt="忌炎" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-pneumatic text-white text-xs px-2 py-1 rounded">
+                                    5星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">忌炎</h4>
+                                    <p class="text-sm text-gray-300">武器：长刃</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        夜归团长，心怀大义，雷厉风行，能聚龙枪，定风场。常年率领夜归奋战在抗击悲鸣的第一线。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">忌炎</h4>
+                                <p class="text-sm text-pneumatic">气动 · 长刃</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 凌阳 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-pneumatic/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1019/300/400" alt="凌阳" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-gray-500 text-white text-xs px-2 py-1 rounded">
+                                    4星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">凌阳</h4>
+                                    <p class="text-sm text-gray-300">武器：臂铠</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        今州瑞狮团成员，善良灵性的异族来客。热情开朗，勇敢正直，对人类抱有强烈的兴趣。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">凌阳</h4>
+                                <p class="text-sm text-pneumatic">气动 · 臂铠</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 桃祈 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-pneumatic/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1020/300/400" alt="桃祈" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-gray-500 text-white text-xs px-2 py-1 rounded">
+                                    4星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">桃祈</h4>
+                                    <p class="text-sm text-gray-300">武器：音感仪</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        天工边防事务的负责人，平时慵懒的她，却总能可靠地解决问题。守护他人的点点愿望汇聚成坚固的屏障。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">桃祈</h4>
+                                <p class="text-sm text-pneumatic">气动 · 音感仪</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 湮灭属性角色 -->
+                <div id="annihilation" class="character-tab-content hidden">
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                        <!-- 漂泊者 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-annihilation/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1023/300/400" alt="漂泊者" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-annihilation text-white text-xs px-2 py-1 rounded">
+                                    主角
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">漂泊者</h4>
+                                    <p class="text-sm text-gray-300">武器：多种</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        你，沉睡万年苏醒的漂泊者。拥有吸收声骸能力的特殊体质，是解开世界谜团的关键人物。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">漂泊者</h4>
+                                <p class="text-sm text-annihilation">湮灭 · 多种</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 今汐 -->
+                        <div class="character-card bg-dark/50 rounded-xl overflow-hidden border border-annihilation/30">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1024/300/400" alt="今汐" class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-annihilation text-white text-xs px-2 py-1 rounded">
+                                    5星
+                                </div>
+                                <div class="character-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                                    <h4 class="text-xl font-bold">今汐</h4>
+                                    <p class="text-sm text-gray-300">武器：长刃</p>
+                                    <p class="text-xs text-gray-400 mt-2">
+                                        皇龙城的统治者，拥有强大的湮灭能力。外表冷漠，内心却有着不为人知的温柔。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-bold">今汐</h4>
+                                <p class="text-sm text-annihilation">湮灭 · 长刃</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-darker py-12 border-t border-primary/30">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">鸣潮</span>
+                        <span class="text-sm text-gray-400">Wuthering Waves</span>
+                    </div>
+                    <p class="text-gray-500 text-sm">
+                        © 2024 广州库洛科技有限公司 版权所有
+                    </p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <i class="fa fa-weibo text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <i class="fa fa-wechat text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <i class="fa fa-bilibili text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <i class="fa fa-twitter text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                <p>本页面仅用于学习演示目的，所有游戏内容及角色版权归广州库洛科技有限公司所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 角色标签切换功能
+        const tabs = document.querySelectorAll('.character-tab');
+        const tabContents = document.querySelectorAll('.character-tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // 移除所有活动状态
+                tabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.classList.remove('bg-hot-melt', 'bg-condensation', 'bg-diffraction', 'bg-conductive', 'bg-pneumatic', 'bg-annihilation');
+                    t.classList.add('bg-gray-700');
+                });
+                
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                    content.classList.remove('active');
+                });
+                
+                // 添加当前活动状态
+                tab.classList.add('active');
+                tab.classList.remove('bg-gray-700');
+                
+                const tabId = tab.getAttribute('data-tab');
+                const activeContent = document.getElementById(tabId);
+                activeContent.classList.remove('hidden');
+                activeContent.classList.add('active');
+                
+                // 根据标签设置背景色
+                switch(tabId) {
+                    case 'hot-melt':
+                        tab.classList.add('bg-hot-melt');
+                        break;
+                    case 'condensation':
+                        tab.classList.add('bg-condensation');
+                        break;
+                    case 'diffraction':
+                        tab.classList.add('bg-diffraction');
+                        break;
+                    case 'conductive':
+                        tab.classList.add('bg-conductive');
+                        break;
+                    case 'pneumatic':
+                        tab.classList.add('bg-pneumatic');
+                        break;
+                    case 'annihilation':
+                        tab.classList.add('bg-annihilation');
+                        break;
+                }
+            });
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-dark/95');
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('bg-dark/95');
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
